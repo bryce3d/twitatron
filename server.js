@@ -11,14 +11,28 @@ app.use(compression());
 
 //add static middleware
 var oneDay = 86400000;
-app.use(express.static(__dirname + '/public', { maxAge: oneDay }));
+app.use(express.static(path.join(__dirname + '/public'), { maxAge: oneDay }));
+
+//Add jade view engine
+app.set('views',path.join(__dirname + '/views'));
+app.set('view engine', 'jade');
 
 // Create our Express router
 var router = express.Router();
 
-// Initial dummy route for testing
+// Load required packages
+var path = require('path');
+var express = require('express');
+var compression = require(compression);
+
+// Load controllers
+var homeController = require('./controllers/home');
+
+// Landing page route
+router.get('/', homeController.index);
 router.get('/', function(req, res) {
-  res.end('Twitatron!');
+	res.locals.ip = req.ip;
+	res.render('home');
 });
 
 // Register all our routes
