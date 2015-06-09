@@ -1,14 +1,14 @@
 doctype html
 html
-	head
-		title TWITATRON
-	body
-		h1 A TWITATRON view has been born! The purpose of this is to serve up a web enabled app in a clean fashion
-		img(src="/img/birdatron-small.jpg")
-		
-	extends layout
+  head
+    title Twitatron
+  body
+    h1 A Twitatron view has been born!
+    img(src="/img/birdatron-small.jpg")
 	
-	block content
-		h1 A Twitatron view has been born!
-		h2 You are visiting from #{ip}
-		img(src="/img/birdatron-small.jpg")
+extends layout
+
+block content
+  h1 A Twitatron view has been born!
+  h2 You are visiting from #{ip}
+  img(src="/img/birdatron-small.jpg")
